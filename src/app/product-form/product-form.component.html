@@ -1,0 +1,28 @@
+<div class="mt-5">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input #name type="text" class="form-control" name="name">
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input #price type="text" class="form-control" name="price">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Category</label>
+    <select #category class="form-control" id="exampleFormControlSelect1">
+      <option value="Undefined">Please Select</option>
+      <option>Telefon</option>
+      <option>PC</option>
+      <option>Dolap</option>
+      <option>Elktronik</option>
+      <option>Mobilya</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <div class="custom-control custom-checkbox mt-2">
+      <input #isActive type="checkbox" class="custom-control-input" id="isActive">
+      <label for="" class="custom-control-label" for="isActive">Aktif</label>
+    </div>
+  </div>
+  <button class="btn btn-primary mt-2" (click)="addProduct(name.value,price.value,isActive.checked,category.value);name.value='';price.value='';category.value='Undefined'"> Save Product</button>
+</div>

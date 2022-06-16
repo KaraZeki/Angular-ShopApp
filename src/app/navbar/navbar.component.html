@@ -1,0 +1,52 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">SocialApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="row">
+        <div class="col-md-3">
+          <ul  *ngIf="loggedIn()"  class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" [routerLink]="['/home']" >Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/members']" routerLinkActive="router-link-active" >Members</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/friends']" routerLinkActive="router-link-active" >Friends</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/messages']" routerLinkActive="router-link-active" >Message</a>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="loggedIn()" class="col-md-3 ml-5" >
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/member/edit']" routerLinkActive="router-link-active" >{{authService.decodeToken.unique_name}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="logout()" href="#">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="!loggedIn()" class="col-md-6 mt-2">
+          <form #form="ngForm" class="form-inline mt-3 mt-md-0 " (ngSubmit)="login()" >
+            <input class="form-control form-control-sm mr-sm-2" required minlength="5" type="text" placeholder="user name" name="username" [(ngModel)]="model.username">
+            <input class="form-control form-control-sm mr-sm-2" required minlength="5" type="password" placeholder="password" name="password" style="margin-left:5px;" [(ngModel)]="model.password">
+            <button class="btn btn-success btn-sm my-2 my-sm-2" type="submit"  style="margin-left: 5px;">Login</button>
+          </form>
+        </div>
+     </div>
+    </div>
+  </div>
+
+</nav>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
